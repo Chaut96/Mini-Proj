@@ -5,6 +5,7 @@ It is based upon Studio Ghibli's People API: https://ghibliapi.herokuapp.com/
 The name, age, gender, hair colour and eye colour is stored with a unique ID.
 
 * To access the Cassandra DB: visit /people
+* To access data on a single character in the DB: visit /people/[id]
 * To access the Studio Ghibli external API: visit /people/external
 * To access data on a single Ghibli universe person: visit /people/external/[id]
 
