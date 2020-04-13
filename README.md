@@ -72,7 +72,7 @@ nano ghibli.py
 ```
 
 ### Packaging App into a Docker Image And Running
-Creating the docker image for the app and running it
+Retrieving dockerfile instructions and building the docker image for the app to run
 ```
 wget -O Dockerfile https://raw.githubusercontent.com/Chaut96/Mini-Proj/master/Dockerfile
 sudo docker build . --tag=ghibli:v1
