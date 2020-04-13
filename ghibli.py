@@ -20,6 +20,14 @@ def get_people():
 		result.append({"id":r.id,"name":r.name,"age":r.age,"gender":r.gender,"hair_colour":r.hair_colour,"eye_colour":r.eye_colour})
 	return jsonify(result)
 
+@app.route('/people/<id>', methods=['GET'])
+def get_people_id(id):
+        character = session.execute("""SELECT * FROM ghibli.characters WHERE id={}""".format(int(id)))
+        result = []
+        for c in character:
+                result.append({"id":c.id,"name":c.name,"age":c.age,"gender":c.gender,"hair_colour":c.hair_colour,"eye_colour":c.eye_colour})
+        return jsonify(result)
+
 @app.route('/people/external', methods=['GET'])
 def get_people_external():
 	people_url = 'https://ghibliapi.herokuapp.com/people'
