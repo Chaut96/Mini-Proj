@@ -1,6 +1,6 @@
 # Cloud Computing Mini Project
 This Flask app connects to a Cassandra Cloud DB to store information.
-It is based upon Studio Ghibli's People API.
+It is based upon Studio Ghibli's People API: https://ghibliapi.herokuapp.com/
 
 The name, age, gender, hair colour and eye colour is stored with a unique ID.
 
