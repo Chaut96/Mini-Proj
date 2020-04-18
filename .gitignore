@@ -5,3 +5,4 @@ flask_venv/
 instance/
 
 # anything else to ignore
+db.sqlite
