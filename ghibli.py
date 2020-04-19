@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 auth = HTTPBasicAuth()
 
@@ -33,8 +33,8 @@ class User(db.Model):
 	def verify_password(self, password):
 		return pwd_context.verify(password, self.password_hash)
 
-# Create database
-db.create_all()
+# Create database by force if needed
+#db.create_all()
 
 # User Registration
 @app.route('/users', methods = ['POST'])
@@ -143,4 +143,4 @@ def delete_people():
 if __name__ == '__main__':
 	if not os.path.exists('db.sqlite'):
 		db.create_all()
-	app.run(host='0.0.0.0', port=8080,debug=True)
+	app.run(host='0.0.0.0', port=8080)
