@@ -1,4 +1,7 @@
-requests
 pip
 Flask
 cassandra-driver
+requests
+flask_sqlalchemy
+passlib
+flask_httpauth
