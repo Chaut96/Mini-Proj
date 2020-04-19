@@ -26,15 +26,13 @@ class User(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	username = db.Column(db.String(32), index= True)
 	password_hash = db.Column(db.String(128))
-
+	
+	# Hash and verification password functions
 	def hash_password(self, password):
-		self.password_hash = pwd_context.encrypt(password)
+		self.password_hash = pwd_context.hash(password)
 
 	def verify_password(self, password):
 		return pwd_context.verify(password, self.password_hash)
-
-# Create database by force if needed
-#db.create_all()
 
 # User Registration
 @app.route('/users', methods = ['POST'])
@@ -71,7 +69,7 @@ def verify_password(username, password):
 # Home route
 @app.route('/')
 def hello():
-	intro ='<h1>Welcome to my app!</h1><p>To access the Cassandra DB, visit: /people</p><p>To access data on a single character in the DB: visit /people/[id]</p><p>To access external Studio Ghibli data, visit: /people/external</p><p>To access data on a single Ghibli universe person, visit: /people/external/[id]</p>'
+	intro ='<h1>Welcome to my app!</h1><p>To Manage DB users: visit /users</p><p>To access the Cassandra DB, visit: /people</p><p>To access data on a single character in the DB: visit /people/[id]</p><p>To access external Studio Ghibli data, visit: /people/external</p><p>To access data on a single Ghibli universe person, visit: /people/external/[id]</p>'
 	return intro
 
 # User Register info
